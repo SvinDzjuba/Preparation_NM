@@ -1,0 +1,38 @@
+
+/* Main page */
+main {
+    height: 100%;
+    position: relative;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+h1, h2 {
+    text-align: center;
+    margin-top: 15px;
+}
+.main__img_container {
+    width: 450px;
+    margin: 45px auto;
+}
+.main__img_container img {
+    width: 100%;
+}
+.socials {
+    width: 300px;
+    height: 80px;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+.socials a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.socials a img {
+    width: auto;
+    height: 60px;
+}

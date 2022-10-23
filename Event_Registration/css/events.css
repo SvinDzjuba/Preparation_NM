@@ -1,0 +1,40 @@
+main {
+    width: 75%;
+    height: 100%;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 35px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+h2 {
+    text-align: center;
+    font-size: 38px;
+}
+.events {
+    width: 80%;
+    margin: 50px auto;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.event {
+    width: 30%;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 20px 5px rgba(88, 88, 88, 0.644);
+    margin: 20px 0;
+}
+.event h3 {
+    text-align: center;
+    margin: 5px;
+    padding: 5px;
+}
+.event p {
+    padding: 15px;
+    text-align: justify;
+}
+.event .date_container {
+    margin: 5px;
+}
+footer {
+    position: relative;
+}
