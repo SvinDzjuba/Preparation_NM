@@ -19,6 +19,11 @@ const renderUserMessage = () => {
 };
 
 const renderMessageElem = (message) => {
+    // Getting bot answer from db
+    let botNode = '';
+    const lowerMessage = message.toLowerCase();
+    getAssistantAnswer(lowerMessage);
+
     const userMessageElem = document.createElement('div');
     const userNode = document.createTextNode(message);
     userMessageElem.classList.add('user_message');
@@ -26,9 +31,8 @@ const renderMessageElem = (message) => {
     chatBody.append(userMessageElem);
     
     const botMessageElem = document.createElement('div');
-    let botNode = '';
-    if(typeof responseAnswers[message] != 'undefined') {
-        botNode = document.createTextNode(responseAnswers[message]);
+    if(typeof responseAnswers[lowerMessage] != 'undefined') {
+        botNode = document.createTextNode(responseAnswers[lowerMessage]);
     } else {
         botNode = document.createTextNode("I'm only robot eblivii!");
     }

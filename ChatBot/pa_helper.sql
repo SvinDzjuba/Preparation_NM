@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Ноя 01 2022 г., 06:15
+-- Время создания: Ноя 01 2022 г., 18:31
 -- Версия сервера: 10.4.24-MariaDB
 -- Версия PHP: 8.1.6
 
@@ -35,14 +35,21 @@ CREATE TABLE `answer` (
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `assistent`
+-- Структура таблицы `assistant`
 --
 
-CREATE TABLE `assistent` (
+CREATE TABLE `assistant` (
   `id` int(11) NOT NULL,
   `user_message` varchar(255) NOT NULL,
   `bot_message` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `assistant`
+--
+
+INSERT INTO `assistant` (`id`, `user_message`, `bot_message`) VALUES
+(1, 'hello', 'Good day!');
 
 -- --------------------------------------------------------
 
@@ -79,9 +86,9 @@ ALTER TABLE `answer`
   ADD PRIMARY KEY (`id`) USING BTREE;
 
 --
--- Индексы таблицы `assistent`
+-- Индексы таблицы `assistant`
 --
-ALTER TABLE `assistent`
+ALTER TABLE `assistant`
   ADD PRIMARY KEY (`id`) USING BTREE;
 
 --
@@ -109,10 +116,10 @@ ALTER TABLE `answer`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT для таблицы `assistent`
+-- AUTO_INCREMENT для таблицы `assistant`
 --
-ALTER TABLE `assistent`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `assistant`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT для таблицы `category`
