@@ -2,39 +2,45 @@ const chatBody = document.querySelector('.chat_body');
 const input = document.querySelector('#input');
 const send = document.querySelector('.send');
 
-send.addEventListener('click', () => renderUserMessage());
+send.addEventListener('click', (e) => {
+    e.preventDefault();
+    getUserMessage();
+});
 input.addEventListener('keydown', (e) => {
     if(e.code == 'Enter') {
-        renderUserMessage();
+        e.preventDefault();
+        send.click();
+        getUserMessage();
     }
 });
 
-const renderUserMessage = () => {
+const getUserMessage = () => {
     const userInput = input.value;
     if(userInput.trim() != '') {
-        renderMessageElem(userInput);
+        renderMessages(userInput);
         chatBody.scrollTop = chatBody.scrollHeight;
     }
-    return;
 };
 
-const renderMessageElem = (message) => {
+const renderMessages = (message) => {
     // Getting bot answer from db
-    let botNode = '';
-    const lowerMessage = message.toLowerCase();
-    getAssistantAnswer(lowerMessage);
+    const botAnswer = getAssistantAnswer();
 
+    // Rendering user message
     const userMessageElem = document.createElement('div');
     const userNode = document.createTextNode(message);
     userMessageElem.classList.add('user_message');
-    userMessageElem.appendChild(userNode);
+    userMessageElem.append(userNode);
     chatBody.append(userMessageElem);
     
+    // Rendering bot answer
     const botMessageElem = document.createElement('div');
-    if(typeof responseAnswers[lowerMessage] != 'undefined') {
-        botNode = document.createTextNode(responseAnswers[lowerMessage]);
+    console.log(botAnswer);
+    let botNode = '';
+    if(botAnswer != null && botAnswer != '') {
+        botNode = document.createTextNode(botAnswer);
     } else {
-        botNode = document.createTextNode("I'm only robot eblivii!");
+        botNode = document.createTextNode("I'm just robot eblivii!");
     }
     botMessageElem.classList.add('chatbot_message');
     botMessageElem.append(botNode);
