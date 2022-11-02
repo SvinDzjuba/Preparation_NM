@@ -1,25 +1,35 @@
-<?php
-include_once 'index.html';
+<!DOCTYPE html>
+<html lang="en">
 
-// Connection
-$database = new mysqli('localhost', 'root', '', 'pa_helper');
-if ($database -> connect_error) {
-    die("Connection failed: " . $database -> connect_error);
-}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Chat Bot</title>
+</head>
 
-// Getting bot message by user message
-if(isset($_POST['msg'])) {
-    $message = strtolower($_POST['msg']);
-    $query = "SELECT `bot_message` FROM `assistant` WHERE `user_message` like '".$message."'";
-    $result = $database -> query($query);
-    if($row = $result -> fetch_assoc()) {
-        $answer = $row['bot_message'];
-        echo $answer;
-    }
-} else {
-    echo null;
-}
+<body>
+    <div id="container">
+        <div class="chat_header">
+            <div class="logo">
+                <img src="Images/img_avatar.png" alt="bot">
+            </div>
+            <div class="title">Let's chat</div>
+        </div>
+        <div class="chat_body">Messages here</div>
+        <div class="chat_input">
+            <div class="input-sec">
+                <form class="myForm">
+                    <input type="text" id="input" placeholder="Enter message" name="msg" autocomplete="off">
+                    <button type="submit" class="send">NU</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="js/app.js"></script>
+    <script src="js/response.js"></script>
+</body>
 
-// Close connection
-$database -> close();
-?>
+</html>

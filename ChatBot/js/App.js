@@ -3,19 +3,20 @@ const input = document.querySelector('#input');
 const send = document.querySelector('.send');
 
 send.addEventListener('click', (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     getUserMessage();
 });
 input.addEventListener('keydown', (e) => {
     if(e.code == 'Enter') {
-        e.preventDefault();
+        console.log('fsdsfsdfsd');
+        // e.preventDefault();
         send.click();
-        getUserMessage();
     }
 });
 
 const getUserMessage = () => {
     const userInput = input.value;
+    console.log('xcvxcvcx');
     if(userInput.trim() != '') {
         renderMessages(userInput);
         chatBody.scrollTop = chatBody.scrollHeight;
@@ -24,8 +25,22 @@ const getUserMessage = () => {
 
 const renderMessages = (message) => {
     // Getting bot answer from db
-    const botAnswer = getAssistantAnswer();
-
+    var botAnswer;
+    console.log(input.value);
+    const form = document.querySelector('.myForm');
+    form.addEventListener('submit', event => {
+        event.preventDefault();
+        $.ajax({
+            url: 'botAnswers.php',
+            method: 'post',
+            dataType: 'html',
+            data: {name:event.target.msg.value},
+            success: function(data){
+                console.log(data);
+                botAnswer = data.name;
+            }
+        });
+    })
     // Rendering user message
     const userMessageElem = document.createElement('div');
     const userNode = document.createTextNode(message);
@@ -35,7 +50,6 @@ const renderMessages = (message) => {
     
     // Rendering bot answer
     const botMessageElem = document.createElement('div');
-    console.log(botAnswer);
     let botNode = '';
     if(botAnswer != null && botAnswer != '') {
         botNode = document.createTextNode(botAnswer);
