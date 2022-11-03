@@ -22,6 +22,11 @@ function renderBotAnswer(botAnswer) {
     $('#botStatus').removeClass('whistBot');
     $('#botStatus').addClass('botTyping');
     $('.chat_body').css('height', '272px');
+    // while ($('#botStatus').hasClass('botTyping')) {
+    //     $('#input').keypress(function(e) {
+    //         return false;
+    //     });
+    // }
     setTimeout(() => {
         $('#botStatus').removeClass('botTyping');
         $('#botStatus').addClass('whistBot');
@@ -40,6 +45,6 @@ function renderBotAnswer(botAnswer) {
 
         input.value = '';
         chatBody.scrollTop = chatBody.scrollHeight;
-    }, 150);
+    }, 1000);
     
 }
